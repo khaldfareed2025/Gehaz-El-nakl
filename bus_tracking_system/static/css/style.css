@@ -104,6 +104,7 @@ body {
   border-radius: 4px;
   text-decoration: none;
   font-weight: 500;
+  width: 155px;
 }
 .btn.btn-primary:hover {
   background-color: #fb8c00;

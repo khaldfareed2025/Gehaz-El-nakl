@@ -23,7 +23,15 @@ class TripListView(ListView):
     context_object_name = 'trips'
 
     def get_queryset(self):
-        return Trip.objects.order_by('-created_at')
+        queryset = Trip.objects.order_by('-created_at')
+        search_query = self.request.GET.get('search', '')
+        if search_query:
+            queryset = queryset.filter(
+                Q(bus__plate_number__icontains=search_query) |
+                Q(device__imei__icontains=search_query) |
+                Q(driver__name__icontains=search_query)
+            )
+        return queryset
 
 
 class TripDetailView(DetailView):
