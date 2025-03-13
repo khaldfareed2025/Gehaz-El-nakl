@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Modern Creative Django Project{% endblock %}</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap">
+
+  <!-- Font Awesome (optional icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnH2N1wsNCIO1AqK4+8fzr/Rl6N2+T/iT6fS3ZuIe3ZqZ9f7FH1Zr6nvIgNnZ0Pc2KJ45F8w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!-- Optional: Animate On Scroll (AOS) for reveals -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container brand-and-toggle">
+      <h1 class="brand">Bus Tracking System</h1>
+      <button id="nav-toggle" class="nav-toggle"><i class="fas fa-bars"></i></button>
+    </div>
+    <nav class="site-nav" id="site-nav">
+      <ul>
+        <li><a href="{% url 'device_list' %}">Devices</a></li>
+        <li><a href="{% url 'bus_list' %}">Buses</a></li>
+        <li><a href="{% url 'driver_list' %}">Drivers</a></li>
+        <li><a href="{% url 'trip_list' %}">Trips</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CURVED HERO SECTION -->
+  <section class="hero" data-aos="fade-up">
+    <!-- Hero content -->
+    <div class="hero-content container">
+      <h2>جهاز النقل العام ق.م</h2>
+      <img src="{% static 'images/GHEHAZ.png' %}" alt="Elghehaz logo" style="width: 25%; height: auto;">
+      <p>Track your devices, buses, drivers, and trips with efficiency!</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content container" data-aos="fade-up">
+    {% block content %}
+    <!-- Child templates will override this. -->
+    {% endblock %}
+  </main>
+
+  <!-- FOOTER with wave shape -->
+  <footer class="site-footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,30 C360,80 1080,0 1440,50 L1440,100 L0,100 Z" fill="#2b2a2a"></path>
+      </svg>
+    </div>
+    <div class="container footer-container">
+      <p>&copy; 2025 Armed Forces Public Transport Authority</p>
+      <p>
+        <a href="http://127.0.0.1:8000/admin/">Admin Panel</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- MAIN JS -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!-- AOS for anims (optional) -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
+</body>
+</html>

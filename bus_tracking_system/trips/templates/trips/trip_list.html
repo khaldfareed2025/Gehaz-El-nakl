@@ -1,0 +1,59 @@
+<!-- trips/templates/trips/trip_list.html -->
+
+{% extends "base.html" %}
+{% block title %}Trips{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="card list-container">
+  <div class="card-header">
+    <h2 class="card-title">Trips</h2>
+    <a href="{% url 'trip_create' %}" class="btn btn-primary">Create New Trip</a>
+  </div>
+  <div class="card-body">
+    {% if trips %}
+    <table class="bus-list-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Device</th>
+          <th>Bus</th>
+          <th>Driver</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Status</th>
+          <th><!-- End Trip Only --></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for trip in trips %}
+        <tr class="clickable-row" data-href="{% url 'trip_detail' trip.pk %}">
+          <td>{{ trip.id }}</td>
+          <td>{% if trip.device %}{{ trip.device.imei }}{% endif %}</td>
+          <td>{% if trip.bus %}{{ trip.bus.plate_number }}{% endif %}</td>
+          <td>{% if trip.driver %}{{ trip.driver.name }}{% endif %}</td>
+          <td>{{ trip.start_time|date:"Y-m-d H:i" }}</td>
+          <td>{{ trip.end_time|date:"Y-m-d H:i" }}</td>
+          <td>{{ trip.is_active|yesno:"Active,Ended" }}</td>
+          <!-- This cell remains for the "End Trip" button only -->
+          <td class="actions-cell">
+            {% if trip.is_active %}
+              <a href="{% url 'trip_end' trip.pk %}" class="btn btn-danger link-delete">End Trip</a>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="no-items">No trips found.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Optional: If you had a modal overlay for confirm delete, keep it below. -->
+
+{% endblock %}
+
+<!-- Add some JS so clicking anywhere on the row navigates to the trip detail -->
+<script src="{% static 'js/main.js' %}"></script>

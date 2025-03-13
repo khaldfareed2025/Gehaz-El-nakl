@@ -1,0 +1,22 @@
+<!-- Corrected file name: buses/templates/buses/bus_detail.html -->
+{% extends 'base.html' %}
+{% block title %}Bus Details{% endblock %}
+{% block content %}
+<div class="card detail-container">
+  <div class="card-header">
+    <h2 class="card-title">Bus Details</h2>
+  </div>
+  <div class="card-body">
+    <ul class="detail-list">
+      <li><strong>Plate Number:</strong> {{ object.plate_number }}</li>
+      <li><strong>Model:</strong> {{ object.model|default:"N/A" }}</li>
+      <li><strong>Capacity:</strong> {{ object.capacity }}</li>
+      <li><strong>Created:</strong> {{ object.created_at|date:"Y-m-d H:i" }}</li>
+    </ul>
+    <div class="button-row">
+      <a href="{% url 'bus_update' object.pk %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'bus_delete' object.pk %}" class="delete-link btn btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
