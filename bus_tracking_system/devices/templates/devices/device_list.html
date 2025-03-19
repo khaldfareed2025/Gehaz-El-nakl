@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}Devices{% endblock %}
+{% block title %}الأجهزة{% endblock %}
 {% block content %}
 <div class="card list-container">
   <div class="card-header">
-    <h2 class="card-title">Devices</h2>
-    <a href="{% url 'device_create' %}" class="btn btn-primary">Add New Device</a>
+    <h2 class="card-title">الأجهزة</h2>
+    <a href="{% url 'device_create' %}" class="btn btn-primary">إضافة جهاز جديد</a>
   </div>
   <div class="card-body">
     {% if object_list %}
@@ -12,9 +12,9 @@
       <thead>
         <tr>
           <th>IMEI</th>
-          <th>Status</th>
-          <th>Created</th>
-          <th>Actions</th>
+          <th>الحالة</th>
+          <th>تاريخ الإنشاء</th>
+          <th>الإجراءات</th>
         </tr>
       </thead>
       <tbody>
@@ -24,33 +24,30 @@
           <td>{{ device.status }}</td>
           <td>{{ device.created_at|date:"Y-m-d H:i" }}</td>
           <td class="actions-cell">
-            <a href="{% url 'device_detail' device.pk %}" class="link-details">Details</a> |
-            <a href="{% url 'device_update' device.pk %}" class="link-edit">Edit</a> |
-            <a href="{% url 'device_delete' device.pk %}" class="delete-link link-delete">Delete</a>
+            <a href="{% url 'device_detail' device.pk %}" class="link-details">التفاصيل</a> |
+            <a href="{% url 'device_update' device.pk %}" class="link-edit">تعديل</a> |
+            <a href="{% url 'device_delete' device.pk %}" class="delete-link link-delete">حذف</a>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     {% else %}
-    <p class="no-items">No devices found.</p>
+    <p class="no-items">لم يتم العثور على أجهزة.</p>
     {% endif %}
   </div>
 </div>
 
-<!-- Modal Overlay for Delete Confirmation -->
 <div id="modal-overlay" class="modal-overlay">
   <div class="modal-box">
-    <h3>Confirm Deletion</h3>
-    <p>Are you sure you want to delete this device?</p>
+    <h3>تأكيد الحذف</h3>
+    <p>هل أنت متأكد أنك تريد حذف هذا الجهاز؟</p>
     <div class="modal-actions">
-      <button id="confirm-delete" class="btn btn-danger">Yes, Delete</button>
-      <button id="cancel-delete" class="btn btn-secondary">Cancel</button>
+      <button id="confirm-delete" class="btn btn-danger">نعم، احذف</button>
+      <button id="cancel-delete" class="btn btn-secondary">إلغاء</button>
     </div>
   </div>
 </div>
-
-
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

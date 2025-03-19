@@ -1,17 +1,17 @@
 <!-- trip_confirm_delete.html -->
 {% extends "base.html" %}
-{% block title %}Delete Trip{% endblock %}
+{% block title %}حذف الرحلة{% endblock %}
 {% block content %}
 <div class="card confirm-delete-container">
   <div class="card-header">
-    <h2 class="card-title">Delete Trip</h2>
+    <h2 class="card-title">حذف الرحلة</h2>
   </div>
   <div class="card-body">
-    <p>Are you sure you want to delete trip #{{ object.id }}?</p>
+    <p>هل أنت متأكد أنك تريد حذف الرحلة رقم {{ object.id }}؟</p>
     <form method="post" style="margin-top: 20px;">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Yes, Delete</button>
-      <a href="{% url 'trip_list' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-danger">نعم، احذف</button>
+      <a href="{% url 'trip_list' %}" class="btn btn-secondary">إلغاء</a>
     </form>
   </div>
 </div>

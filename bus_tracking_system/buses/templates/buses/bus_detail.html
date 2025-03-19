@@ -1,21 +1,20 @@
-<!-- Corrected file name: buses/templates/buses/bus_detail.html -->
 {% extends 'base.html' %}
-{% block title %}Bus Details{% endblock %}
+{% block title %}تفاصيل الباص{% endblock %}
 {% block content %}
 <div class="card detail-container">
   <div class="card-header">
-    <h2 class="card-title">Bus Details</h2>
+    <h2 class="card-title">تفاصيل الباص</h2>
   </div>
   <div class="card-body">
     <ul class="detail-list">
-      <li><strong>Plate Number:</strong> {{ object.plate_number }}</li>
-      <li><strong>Model:</strong> {{ object.model|default:"N/A" }}</li>
-      <li><strong>Capacity:</strong> {{ object.capacity }}</li>
-      <li><strong>Created:</strong> {{ object.created_at|date:"Y-m-d H:i" }}</li>
+      <li><strong>رقم اللوحة:</strong> {{ object.plate_number }}</li>
+      <li><strong>الموديل:</strong> {{ object.model|default:"غير متوفر" }}</li>
+      <li><strong>السعة:</strong> {{ object.capacity }}</li>
+      <li><strong>تاريخ الإنشاء:</strong> {{ object.created_at|date:"Y-m-d H:i" }}</li>
     </ul>
     <div class="button-row">
-      <a href="{% url 'bus_update' object.pk %}" class="btn btn-warning">Edit</a>
-      <a href="{% url 'bus_delete' object.pk %}" class="delete-link btn btn-danger">Delete</a>
+      <a href="{% url 'bus_update' object.pk %}" class="btn btn-warning">تعديل</a>
+      <a href="{% url 'bus_delete' object.pk %}" class="delete-link btn btn-danger">حذف</a>
     </div>
   </div>
 </div>

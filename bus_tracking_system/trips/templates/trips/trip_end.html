@@ -1,17 +1,17 @@
 <!-- trip_end.html -->
 {% extends "base.html" %}
-{% block title %}End Trip{% endblock %}
+{% block title %}إنهاء الرحلة{% endblock %}
 {% block content %}
 <div class="card confirm-delete-container">
   <div class="card-header">
-    <h2 class="card-title">End Trip</h2>
+    <h2 class="card-title">إنهاء الرحلة</h2>
   </div>
   <div class="card-body">
-    <p>Are you sure you want to end this trip?</p>
+    <p>هل أنت متأكد أنك تريد إنهاء هذه الرحلة؟</p>
     <form method="post" style="margin-top: 20px;">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Yes, End Trip</button>
-      <a href="{% url 'trip_list' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-danger">نعم، إنهاء الرحلة</button>
+      <a href="{% url 'trip_list' %}" class="btn btn-secondary">إلغاء</a>
     </form>
   </div>
 </div>

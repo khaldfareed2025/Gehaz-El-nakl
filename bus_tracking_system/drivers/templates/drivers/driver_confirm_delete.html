@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Delete Driver{% endblock %}
+{% block title %}حذف السائق{% endblock %}
 {% block content %}
 <div class="card confirm-delete-container">
   <div class="card-header">
-    <h2 class="card-title">Delete Driver</h2>
+    <h2 class="card-title">حذف السائق</h2>
   </div>
   <div class="card-body">
-    <p>Are you sure you want to delete driver: "<strong>{{ object.name }}</strong>"?</p>
+    <p>هل أنت متأكد أنك تريد حذف السائق: "<strong>{{ object.name }}</strong>"؟</p>
     <form method="post" style="margin-top: 20px;">
       {% csrf_token %}
-      <button type="submit" class="btn btn-danger">Yes, Delete</button>
-      <a href="{% url 'driver_list' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-danger">نعم، احذف</button>
+      <a href="{% url 'driver_list' %}" class="btn btn-secondary">إلغاء</a>
     </form>
   </div>
 </div>

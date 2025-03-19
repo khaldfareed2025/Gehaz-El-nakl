@@ -1,9 +1,9 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang=ar>
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %}Gehaz El-nakl bus location{% endblock %}</title>
+  <title>{% block title %}موقع باصات جهاز النقل{% endblock %}</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,15 @@
   <!-- HEADER -->
   <header class="site-header">
     <div class="container brand-and-toggle">
-      <h1 class="brand">Bus Tracking System</h1>
+      <h1 class="brand">نظام تتبع الباصات</h1>
       <button id="nav-toggle" class="nav-toggle"><i class="fas fa-bars"></i></button>
     </div>
     <nav class="site-nav" id="site-nav">
       <ul>
-        <li><a href="{% url 'device_list' %}">Devices</a></li>
-        <li><a href="{% url 'bus_list' %}">Buses</a></li>
-        <li><a href="{% url 'driver_list' %}">Drivers</a></li>
-        <li><a href="{% url 'trip_list' %}">Trips</a></li>
+        <li><a href="{% url 'device_list' %}">الأجهزة</a></li>
+        <li><a href="{% url 'bus_list' %}">الباصات</a></li>
+        <li><a href="{% url 'driver_list' %}">السائقون</a></li>
+        <li><a href="{% url 'trip_list' %}">الرحلات</a></li>
       </ul>
     </nav>
   </header>
@@ -46,7 +46,6 @@
     <div class="hero-content container">
       <h2>جهاز النقل العام ق.م</h2>
       <img src="{% static 'images/GHEHAZ.png' %}" alt="Elghehaz logo" style="width: 25%; height: auto;">
-      <p>Track your devices, buses, drivers, and trips with efficiency!</p>
     </div>
   </section>
 
@@ -65,7 +64,7 @@
       </svg>
     </div>
     <div class="container footer-container">
-      <p>&copy; 2025 Armed Forces Public Transport Authority</p>
+      <p>&copy; 2025 هيئة النقل العام للقوات المسلحة</p>
       <p>
         <a href="http://127.0.0.1:8000/admin/">Admin Panel</a>
       </p>

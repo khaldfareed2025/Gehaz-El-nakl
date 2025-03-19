@@ -82,7 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'ar'
+LANGUAGE_CODE = 'En'
 TIME_ZONE = 'Africa/Cairo'
 USE_I18N = True
 USE_TZ = True

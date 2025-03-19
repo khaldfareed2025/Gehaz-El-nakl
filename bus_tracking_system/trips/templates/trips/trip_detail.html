@@ -2,50 +2,50 @@
 
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Trip Details{% endblock %}
+{% block title %}تفاصيل الرحلة{% endblock %}
 {% block content %}
 <div class="card detail-container">
   <div class="card-header">
-    <h2 class="card-title">Trip Details</h2>
+    <h2 class="card-title">تفاصيل الرحلة</h2>
   </div>
   <div class="card-body">
     <!-- Basic trip info -->
     <ul class="detail-list">
-      <li><strong>Device:</strong>
+      <li><strong>الجهاز:</strong>
         {% if object.device %}
           {{ object.device.imei }}
         {% else %}
-          No Device
+          لا يوجد جهاز
         {% endif %}
       </li>
-      <li><strong>Bus:</strong>
+      <li><strong>الباص:</strong>
         {% if object.bus %}
           {{ object.bus.plate_number }}
         {% else %}
-          No Bus
+          لا يوجد باص
         {% endif %}
       </li>
-      <li><strong>Driver:</strong>
+      <li><strong>السائق:</strong>
         {% if object.driver %}
           {{ object.driver.name }}
         {% else %}
-          No Driver
+          لا يوجد سائق
         {% endif %}
       </li>
-      <li><strong>Start Time:</strong> {{ object.start_time }}</li>
-      <li><strong>End Time:</strong> {{ object.end_time }}</li>
-      <li><strong>Active:</strong> {{ object.is_active|yesno:"Yes,No" }}</li>
+      <li><strong>وقت البدء:</strong> {{ object.start_time }}</li>
+      <li><strong>وقت الانتهاء:</strong> {{ object.end_time }}</li>
+      <li><strong>نشط:</strong> {{ object.is_active|yesno:"نعم,لا" }}</li>
     </ul>
 
     <!-- Show only the current location -->
-    <h3>Current Location</h3>
+    <h3>الموقع الحالي</h3>
     <table style="text-align: center;">
       <thead>
         <tr>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Speed (km/h)</th>
-          <th>Timestamp</th>
+          <th>خط العرض</th>
+          <th>خط الطول</th>
+          <th>السرعة (كم/ساعة)</th>
+          <th>الوقت</th>
         </tr>
       </thead>
       <tbody>
@@ -58,20 +58,20 @@
         </tr>
         {% else %}
         <tr>
-          <td colspan="4">No location data available.</td>
+          <td colspan="4">لا توجد بيانات موقع متاحة.</td>
         </tr>
         {% endif %}
       </tbody>
     </table>
 
     <!-- Button to show location history -->
-    <button id="showHistoryBtn" class="btn btn-primary" style="margin-top: 20px;">Show Location History</button>
+    <button id="showHistoryBtn" class="btn btn-primary" style="margin-top: 20px;">عرض تاريخ المواقع</button>
 
     <!-- "Edit" or "End Trip" if you have them -->
     <div class="button-row" style="margin-top: 20px;">
-      <a href="{% url 'trip_update' object.pk %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'trip_update' object.pk %}" class="btn btn-warning">تعديل</a>
       {% if object.is_active %}
-        <a href="{% url 'trip_end' object.pk %}" class="btn btn-danger">End Trip</a>
+        <a href="{% url 'trip_end' object.pk %}" class="btn btn-danger">إنهاء الرحلة</a>
       {% endif %}
     </div>
   </div>
@@ -80,7 +80,7 @@
 <!-- MAP SECTION -->
 <div class="card" style="margin-top: 20px;">
   <div class="card-header">
-    <h2 class="card-title">Trip Route / Current Location</h2>
+    <h2 class="card-title">مسار الرحلة / الموقع الحالي</h2>
   </div>
   <div class="card-body">
     <div id="map" style="width: 100%; height: 500px;"></div>
@@ -91,14 +91,14 @@
 <div id="historyModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Location History</h2>
+    <h2>تاريخ المواقع</h2>
     <table style="text-align: center;">
       <thead>
         <tr>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Speed (km/h)</th>
-          <th>Timestamp</th>
+          <th>خط العرض</th>
+          <th>خط الطول</th>
+          <th>السرعة (كم/ساعة)</th>
+          <th>الوقت</th>
         </tr>
       </thead>
       <tbody>
@@ -142,7 +142,7 @@
     // Add a marker for the current location
     const currentLocation = locations[locations.length - 1];
     L.marker(currentLocation).addTo(map)
-      .bindPopup('Current Location')
+      .bindPopup('الموقع الحالي')
       .openPopup();
   {% else %}
     console.log("No location data available.");
